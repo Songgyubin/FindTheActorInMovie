@@ -1,4 +1,5 @@
 import org.gradle.kotlin.dsl.DependencyHandlerScope
+import kotlin.coroutines.Continuation
 
 object Dependencies {
 
@@ -14,7 +15,7 @@ object Dependencies {
     private const val kaptTest = "kaptTest"
     private const val kaptAndroidTest = "kaptAndroidTest"
 
-    object Kotlin{
+    object Kotlin {
         const val VERSION = "1.7.10"
     }
 
@@ -23,9 +24,10 @@ object Dependencies {
         const val MATERIAL = "com.google.android.material:material:1.6.1"
     }
 
-    fun DependencyHandlerScope.applyMaterial(){
+    fun DependencyHandlerScope.applyMaterial() {
         implementation(Google.MATERIAL)
     }
+
     object AndroidX {
         const val APPCOMPAT = "androidx.appcompat:appcompat:1.5.0"
         const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:2.1.4"
@@ -41,7 +43,18 @@ object Dependencies {
         implementation(AndroidX.CONSTRAINT_LAYOUT)
     }
 
-    object Hilt{
+    object Retrofit {
+        const val VERSION = "2.9.0"
+
+        const val RETROFIT = "com.squareup.retrofit2:retrofit:$VERSION"
+        const val CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:$VERSION"
+    }
+    fun DependencyHandlerScope.applyRetrofit(){
+        implementation(Retrofit.RETROFIT)
+        implementation(Retrofit.CONVERTER_GSON)
+    }
+
+    object Hilt {
         const val VERSION = "2.42"
 
         const val CORE = "com.google.dagger:hilt-android:$VERSION"
@@ -56,7 +69,7 @@ object Dependencies {
         const val LOCAL_TESTING_COMPILER = "com.google.dagger:hilt-compiler:$VERSION"
     }
 
-    fun DependencyHandlerScope.applyHilt(){
+    fun DependencyHandlerScope.applyHilt() {
         implementation(Hilt.CORE)
         kapt(Hilt.COMPILER)
 
@@ -66,7 +79,6 @@ object Dependencies {
         androidTestImplementation(Hilt.ANDROID_TESTING)
         kaptAndroidTest(Hilt.ANDROID_TESTING_COMPILER)
     }
-
 
 
     object Test {

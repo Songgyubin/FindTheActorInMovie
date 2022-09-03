@@ -1,6 +1,7 @@
 import Dependencies.applyAndroidX
 import Dependencies.applyHilt
 import Dependencies.applyMaterial
+import Dependencies.applyRetrofit
 
 plugins {
     id("com.android.application")
@@ -43,6 +44,7 @@ dependencies {
     applyMaterial()
     applyAndroidX()
     applyHilt()
+    applyRetrofit()
 
 }
 kapt {

@@ -18,6 +18,12 @@ object Dependencies {
     object Kotlin {
         const val VERSION = "1.7.10"
     }
+    object KotlinX{
+        const val VERSION = "1.2.0"
+    }
+    fun DependencyHandlerScope.applyKotlinX(){
+        implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:${KotlinX.VERSION}")
+    }
 
 
     object Google {
